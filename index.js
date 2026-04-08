@@ -27,16 +27,14 @@ npx sequelize-cli model:generate --name Banner --attributes name:string,image:te
   */
 
 //const express = require('express')
-import express from 'express'
-import dotenv from 'dotenv'
+const express = require('express')
+const dotenv = require('dotenv')
 dotenv.config()
 
 const app = express()
 app.use(express.json())
-express.urlencoded({ extended: true })
-
-import { AppRoute } from './AppRoute.js'
-
+app.use(express.urlencoded({ extended: true }))
+const { AppRoute } = require('./AppRoute')
 app.get('/', (req, res) => {
   res.send('This is my shop app! Hello Wordl 11')
 })

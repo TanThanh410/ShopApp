@@ -1,24 +1,42 @@
-export async function getBrands(req, res) {
+const db = require('../models')
+const { Product } = db
+
+exports.getBrands = async (req, res) => {
   res.status(200).json({
     message: 'Lấy danh sách thương hiệu thành công',
   })
 }
-export async function getBrandById(req, res) {
+
+exports.getBrandById = async (req, res) => {
   res.status(200).json({
     message: 'Lấy thông tin thương hiệu thành công',
   })
 }
-export async function insertBrands(req, res) {
-  res.status(200).json({
-    message: 'Thêm thương hiệu thành công',
-  })
+
+exports.insertBrands = async (req, res) => {
+  try {
+    const brand = await db.Brand.create(req.body)
+
+    res.status(201).json({
+      message: 'Thêm thương hiệu thành công',
+      data: brand
+    })
+
+  } catch (error) {
+    res.status(500).json({
+      message: 'Thêm thương hiệu thất bại',
+      error: error.message
+    })
+  }
 }
-export async function updateBrands (req, res) {
+
+exports.updateBrands = async (req, res) => {
   res.status(200).json({
     message: 'Cập nhật thương hiệu thành công',
   })
 }
-export async function deleteBrands(req, res) {
+
+exports.deleteBrands = async (req, res) => {
   res.status(200).json({
     message: 'Xóa thương hiệu thành công',
   })

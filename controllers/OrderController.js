@@ -1,24 +1,31 @@
-export async function getOrders(req, res) {
+const db = require('../models')
+const { Product } = db
+
+exports.getOrders = async (req, res) => {
   res.status(200).json({
     message: 'Lấy danh sách đơn hàng thành công',
   })
 }
-export async function getOrderById(req, res) {
+
+exports.getOrderById = async (req, res) => {
   res.status(200).json({
     message: 'Lấy thông tin đơn hàng thành công',
   })
 }
-export async function insertOrders(req, res) {
+
+exports.insertOrders = async (req, res) => {
   res.status(200).json({
     message: 'Thêm đơn hàng thành công',
   })
 }
-export async function updateOrders(req, res) {
+
+exports.updateOrders = async (req, res) => {
   res.status(200).json({
     message: 'Cập nhật đơn hàng thành công',
   })
 }
-export async function deleteOrders(req, res) {
+
+exports.deleteOrders = async (req, res) => {
   res.status(200).json({
     message: 'Xóa đơn hàng thành công',
   })
